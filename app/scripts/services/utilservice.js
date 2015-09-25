@@ -12,7 +12,8 @@ angular.module('envomusMusicEditor')
     // Service logic
     // ...
 
-    var meaningOfLife = 42;
+    var pjson = require('./package.json');
+    $rootScope.version = pjson.version;
 
     // Public API here
     return {
@@ -59,6 +60,10 @@ angular.module('envomusMusicEditor')
         } else {
           $rootScope.showLoading = false;
         }
+      },
+
+      getVersion: function () {
+        return pjson.version;
       }
     };
   }]);

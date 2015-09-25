@@ -52,7 +52,7 @@ angular.module('envomusMusicEditor')
             autoPlay: true,
             sources: controller.videos[0].sources,
             theme: {
-            	url: "../bower_components/videogular-themes-default/videogular.css"
+            	url: "bower_components/videogular-themes-default/videogular.css"
             },
    //          plugins: {
 			// 	poster: "http://www.videogular.com/assets/images/videogular.png"
