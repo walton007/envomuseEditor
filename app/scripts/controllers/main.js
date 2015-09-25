@@ -10,7 +10,6 @@
 angular.module('envomusMusicEditor')
   .controller('MainCtrl', ['$rootScope', '$scope', '$location', '$log', '$q', 'utilService', 'dialogs', 'dateTemplateService',
     function($rootScope, $scope, $location, $log, $q, utilService, dialogs, dateTemplateService) {
-      utilService.getVersion();
       // Sidebar operation
       $scope.updateDateTemplateArr = function() {
         $scope.dateTemplatesArr = dateTemplateService.getDateTemplateArray();

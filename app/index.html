@@ -43,6 +43,10 @@
         </div>
     </div>
 
+    <a ng-click="openDebugTool()" class="btn btn-primary" tooltip="调试" style="position: absolute">
+        <i class="glyphicon glyphicon-cog"></i>
+    </a>
+
     <div class="header container" ng-controller="OperationCtrl">
         <div class="row">
             <div class="col-md-9">
@@ -56,6 +60,7 @@
                 <a ng-href="#/help" class="btn btn-primary" tooltip="帮助">
                     <i class="glyphicon glyphicon-question-sign" aria-hidden="true"></i>
                 </a>
+
                 <div class="btn-group" dropdown dropdown-append-to-body>
                     <button type="button" class="btn btn-primary dropdown-toggle" dropdown-toggle>
                     <i class="glyphicon glyphicon-cog" aria-hidden="true"></i> <span class="caret"></span>

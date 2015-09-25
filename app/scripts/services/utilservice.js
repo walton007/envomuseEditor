@@ -14,6 +14,10 @@ angular.module('envomusMusicEditor')
 
     var pjson = require('./package.json');
     $rootScope.version = pjson.version;
+    $rootScope.openDebugTool = function () {
+      var win = require('nw.gui').Window.get();
+      return win.showDevTools();
+    }
 
     // Public API here
     return {
@@ -60,10 +64,6 @@ angular.module('envomusMusicEditor')
         } else {
           $rootScope.showLoading = false;
         }
-      },
-
-      getVersion: function () {
-        return pjson.version;
       }
     };
   }]);
