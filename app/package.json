@@ -1,5 +1,5 @@
 {
-  "name": "musicplayer",
+  "name": "envomuseMusicEditor",
   "version": "0.1.0",
   "dependencies": {
     "archiver": "^0.14.4",
