@@ -1,14 +1,13 @@
-# music-player
+# music-editor
 
-This project is generated with [yo angular generator](https://github.com/yeoman/generator-angular)
-version 0.11.1.
+This project is used for editor program for envomuse
 
 ## Build & development
-
+Run 'cd app'
 Run `npm install --production && bower install --production`
 
-Run `grunt` for building and `grunt serve` for preview.
+Run `nw .` for debug the app
 
-## Testing
-
-Running `grunt test` will run the unit tests with karma.
+## build app package for Mac and Win platform
+cd to root directory
+Running `gulp` to build the app
