@@ -1,0 +1,38 @@
+<div class="panel panel-default wrapper">
+  <div class="panel-heading"> 创建新的DateTemplate </div>
+    <form class="form-horizontal m-t">
+      <div class="form-group">
+        <label for="packageName" class="col-sm-4 control-label">DateTemplate名称</label>
+        <div class="col-sm-6">
+            <input type="text" class="form-control" ng-model="name" placeholder="例如：工作日">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="brand" class="col-sm-4 control-label"> Box文件目录 </label>
+        <div class="col-sm-6">
+            <div file-dialog  webkitdirectory on-file-selected="onBoxRootDirectorySelected" title = '请选择文件目录'/>
+
+            <div class="row">
+              {{boxRootPath}}
+            </div>
+        </div>
+        
+      </div>
+     
+
+      <div class="form-group" ng-show="name.length >0">
+        <label class="col-sm-4 control-label"></label>
+        <div class="col-sm-6">
+            <button class="btn btn-info btn-xs" ng-click="createNewDateTemplate()"  > 确定 </button>
+        </div>
+      </div>
+    </form>
+</div>
+<br>
+
+
+
+
+
+      

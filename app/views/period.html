@@ -1,0 +1,157 @@
+<div class="row">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+			播放周期设置      
+    </div>
+    <div class="panel-body">
+			<h3> 请选择设置方式 </h3>
+			<div class="row">
+				<div class="col-md-3">
+					<label>
+						<input type="radio" ng-model="periodInfo.calcType" value="daysOfWeek" ng-change="changeCalcType();">
+						星期N设置
+					</label>
+				</div>
+				<div class="col-md-3">
+					<label>
+						<input type="radio" ng-model="periodInfo.calcType" value="dateRange" ng-change="changeCalcType();">
+						日期段设置
+					</label>
+				</div>
+				<div class="col-md-3">
+					<label>
+						<input type="radio" ng-model="periodInfo.calcType" value="multipleDates" ng-change="changeCalcType();">
+						多日期设置
+					</label>
+				</div>
+		</div>
+	</div>
+</div>
+
+<!-- days of week -->
+<div class="panel panel-default" ng-show="periodInfo.calcType==='daysOfWeek'">
+  <div class="panel-heading">
+    星期N设置
+    <div class="pull-right">
+	    <button class="btn btn-info btn-xs" ng-click="setDaysOfWeekMode('weekday')" tooltip="选择所有工作日">工作日</button>
+	    <button class="btn btn-info btn-xs" ng-click="setDaysOfWeekMode('weekend')" tooltip="选择周末">周末</button>
+	    <button class="btn btn-info btn-xs" ng-click="setDaysOfWeekMode('everyday')" tooltip="选择整周">每天</button>
+    </div>
+  </div>
+  <div class="panel-body">
+  	<div class="row">
+			<div class="col-md-2">
+				<label> 星期一
+					<input type="checkbox" ng-model="periodInfo.daysOfWeekValues.Mon">
+				</label>
+			</div>
+			<div class="col-md-2">
+				<label> 星期二
+					<input type="checkbox" ng-model="periodInfo.daysOfWeekValues.Tue">
+				</label>
+			</div>
+			<div class="col-md-2">
+				<label> 星期三
+					<input type="checkbox" ng-model="periodInfo.daysOfWeekValues.Wed">
+				</label>
+			</div>
+			<div class="col-md-2">
+				<label> 星期四
+					<input type="checkbox" ng-model="periodInfo.daysOfWeekValues.Thur">
+				</label>
+			</div>
+			<div class="col-md-2">
+				<label> 星期五
+					<input type="checkbox" ng-model="periodInfo.daysOfWeekValues.Fri">
+				</label>
+			</div>
+			<div class="col-md-2">
+				<label> 星期六
+					<input type="checkbox" ng-model="periodInfo.daysOfWeekValues.Sat">
+				</label>
+			</div>
+			<div class="col-md-2">
+				<label> 星期日
+					<input type="checkbox" ng-model="periodInfo.daysOfWeekValues.Sun">
+				</label>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- /days of week -->
+
+<!-- date range -->
+<div class="panel panel-default" ng-show="periodInfo.calcType==='dateRange'">
+  <div class="panel-heading">
+    日期段设置
+  </div>
+  <div class="panel-body">
+  	<div class="row">
+			<div class="col-md-6">
+				<h5>开始日期<br/> <em>{{periodInfo.dateRangeValues.startDate | date:'fullDate' }}</em> </h5>
+				<div style="display:inline-block; min-height:290px;">
+					<datepicker ng-model="periodInfo.dateRangeValues.startDate" min-date=" " show-weeks="false" class="well well-sm"></datepicker>
+				</div>
+			</div>
+			<div class="col-md-6">
+				<h5>结束日期<br/> <em>{{periodInfo.dateRangeValues.endDate | date:'fullDate' }}</em> </h5>
+				<div style="display:inline-block; min-height:290px;">
+					<datepicker ng-model="periodInfo.dateRangeValues.endDate" min-date="periodInfo.dateRangeValues.startDate" show-weeks="false" class="well well-sm"></datepicker>
+				</div>
+			</div>
+		</div>
+  </div>
+</div>
+<!-- /date range -->
+
+
+<!-- multiple dates -->
+<div class="panel panel-default" ng-show="periodInfo.calcType==='multipleDates'">
+<!-- <div class="panel panel-default"> -->
+  <div class="panel-heading">
+    多日期设置
+  </div>
+  <div class="panel-body">
+  	<div class="row">
+			<div class="col-md-6">
+				<div style="display:inline-block; min-height:200px;">
+					<datepicker ng-model="dt" min-date=" " show-weeks="false" class="well well-sm"></datepicker>
+				</div>
+			</div>
+			<div class="col-md-6">
+				<div class="m-b-sm">
+					<span class="m-r-xs">当前选择： <em>{{dt | date:'fullDate' }}</em> </span>
+					<span>
+						<a class="btn btn-info" tooltip="加入当前日期" ng-click="addMultipleDatesValues(dt)">
+							<i class="glyphicon glyphicon-plus" aria-hidden="true"></i>
+						</a>
+					</span>
+				</div>
+				<div class="panel panel-default">
+					<!-- Default panel contents -->
+					<div class="panel-heading">日期列表</div>
+					<!-- Table -->
+					<table class="table table-striped">
+						<thead>
+							<tr>
+								<th>序号</th>
+								<th class="col-md-7">日期</th>
+								<th class="col-md-2">删除</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr ng-repeat="date in periodInfo.multipleDatesValues" ng-click="">
+								<td>{{$index + 1}}</td>
+								<td>{{date | date:'fullDate' }}</td>
+								<td>
+									<span class="glyphicon glyphicon-trash" ng-click="removeMultipleDatesValues($index)" aria-hidden="true"></span>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+  </div>
+</div>
+<!-- multiple dates -->

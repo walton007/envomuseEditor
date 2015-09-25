@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html class="no-js">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    <!-- build:css(.) styles/vendor.css -->
+    <!-- bower:css -->
+    <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="../bower_components/angular-dialog-service/dist/dialogs.css" />
+    <link rel="stylesheet" href="../bower_components/spinkit/css/spinkit.css" />
+
+    <!-- endbower -->
+    <!-- endbuild -->
+    <!-- build:css(.tmp) styles/main.css -->
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/timestack.css">
+    <!-- endbuild -->
+  </head>
+
+  <body ng-app="envomusMusicEditor">
+    <!--[if lt IE 7]>
+    <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+    <!-- Add your site or application content here -->
+
+    <div ng-show="showLoading" class="vertical-center loadingContainer">
+        <div class="sk-spinner sk-spinner-fading-circle">
+            <div class="sk-circle1 sk-circle"></div>
+            <div class="sk-circle2 sk-circle"></div>
+            <div class="sk-circle3 sk-circle"></div>
+            <div class="sk-circle4 sk-circle"></div>
+            <div class="sk-circle5 sk-circle"></div>
+            <div class="sk-circle6 sk-circle"></div>
+            <div class="sk-circle7 sk-circle"></div>
+            <div class="sk-circle8 sk-circle"></div>
+            <div class="sk-circle9 sk-circle"></div>
+            <div class="sk-circle10 sk-circle"></div>
+            <div class="sk-circle11 sk-circle"></div>
+            <div class="sk-circle12 sk-circle"></div>
+        </div>
+    </div>
+
+    <div class="header container" ng-controller="OperationCtrl">
+        <div class="row">
+            <div class="col-md-9">
+                <h3> ENVOMUSE品牌音乐编排系统 </h3>
+            </div>
+
+            <div class="col-md-3">
+                <a ng-href="#/main" class="btn btn-primary" tooltip="首页">
+                    <i class="glyphicon glyphicon-home" aria-hidden="true"></i>
+                </a>
+                <a ng-href="#/help" class="btn btn-primary" tooltip="帮助">
+                    <i class="glyphicon glyphicon-question-sign" aria-hidden="true"></i>
+                </a>
+                <div class="btn-group" dropdown dropdown-append-to-body>
+                    <button type="button" class="btn btn-primary dropdown-toggle" dropdown-toggle>
+                    <i class="glyphicon glyphicon-cog" aria-hidden="true"></i> <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><div file-dialog accept=".envo" on-file-selected="openEnvoFile" title = '打开.envo文件'></div> </li>
+                        <li><div file-dialog saveas accept=".envo"  on-file-selected="saveAsNewEnvoFile" title = '另存为...'></div> </li>
+                        <li class="divider"></li>
+                        <li> <div ng-click="openExportDialog()" class="btn btn-info" > 生成工作包 </div> </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row m-b">
+            <div ng-view=""></div>
+        </div>
+    </div>
+
+    <div class="footer">
+      <div class="container">
+        <span class="pull-right"><i class="glyphicon glyphicon-copyright-mark"></i>2015 版权所有</span>
+        <span><i class="glyphicon glyphicon-calendar"></i> Envomuse Program Editor</span>
+      </div>
+    </div>
+    
+    <!-- build:js(.) scripts/vendor.js -->
+    <!-- bower:js -->
+    <script src="../bower_components/jquery/dist/jquery.js"></script>
+    <script src="../bower_components/angular/angular.js"></script>
+    <script src="../bower_components/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="../bower_components/angular-animate/angular-animate.js"></script>
+    <script src="../bower_components/angular-cookies/angular-cookies.js"></script>
+    <script src="../bower_components/angular-resource/angular-resource.js"></script>
+    <script src="../bower_components/angular-route/angular-route.js"></script>
+    <script src="../bower_components/angular-sanitize/angular-sanitize.js"></script>
+    <script src="../bower_components/angular-touch/angular-touch.js"></script>
+    <script src="../bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+    <script src="../bower_components/videogular/videogular.js"></script>
+    <script src="../bower_components/videogular-controls/vg-controls.js"></script>
+    <script src="../bower_components/ng-lodash/build/ng-lodash.js"></script>
+    <script src="../bower_components/moment/moment.js"></script>
+    <script src="../bower_components/angular-moment/angular-moment.js"></script>
+    <script src="../bower_components/buzz/dist/buzz.js"></script>
+    <script src="../bower_components/angular-dialog-service/dist/dialogs.js"></script>
+    <script src="../bower_components/angular-dialog-service/dist/dialogs-default-translations.js"></script>
+    
+
+    <!-- endbower -->
+    <script src="scripts/libs/angular-locale_zh-cn.js"></script>
+    <script src="scripts/libs/timestack.min.js"></script>
+    <!-- endbuild -->
+    <!-- build:js({.tmp,app}) scripts/scripts.js -->
+    <script src="scripts/app.js"></script>
+    <script src="scripts/controllers/main.js"></script>
+    <script src="scripts/services/playerservie.js"></script>
+    <script src="scripts/services/utilservice.js"></script>
+    <script src="scripts/decorators/logdecorator.js"></script>
+    <script src="scripts/directives/filedialog.js"></script>
+    <script src="scripts/services/dateTemplateService.js"></script>
+    <script src="scripts/controllers/box.js"></script>
+    <script src="scripts/controllers/period.js"></script>
+    <script src="scripts/filters/periodinfofilter.js"></script>
+    <script src="scripts/filters/durationfilter.js"></script>
+    <script src="scripts/controllers/operation.js"></script>
+    <script src="scripts/controllers/newDateTemplateCtrl.js"></script>
+    <script src="scripts/services/archiveservice.js"></script>
+    <!-- endbuild -->
+    <script type="text/javaScript">
+    // var ua = navigator.userAgent.toLocaleLowerCase();
+    // console.log('ua:', ua);
+    // if (ua.indexOf('music') >= 0) {
+    // var gulp = require('gulp');
+    // gulp.task('reload', function () {
+    // if (location) location.reload();
+    // });
+    // gulp.watch('./app/**/*', ['reload']);
+    // };
+    </script>
+  </body>
+</html>

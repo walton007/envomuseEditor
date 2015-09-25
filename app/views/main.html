@@ -1,0 +1,96 @@
+<!-- sidebar -->
+  <div class="sidebar">
+      <ul class="nav nav-stacked">
+        <li>日期模板列表</li>
+        <li ng-repeat="dt in dateTemplatesArr"><a ng-click="setActiveDateTemplateDialog(dt)">{{dt.name}}</a></li>
+        <li><a ng-click="openCreateNewDateTemplateDialog()" ><i class="glyphicon glyphicon-plus m-r-xs"></i>添加</a></li>
+
+        <li> 总歌曲#: {{totalTrackNum}}</li>
+      </ul>
+  </div>
+    
+    <!-- /sidebar -->
+
+<div class="row" ng-show="dateTemplate !== null">
+  <div class="row">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        第一步：设置日期模板名称及曲风盒目录
+      </div>
+      <div class="panel-body">
+        <div class="row">
+          <div class="col-md-6">
+            <form class="navbar-form navbar-left">
+              <div class="form-group">
+                <label>名称: {{dateTemplate.name}}</label>
+              </div>
+            </form>
+          </div>
+          <div class="col-md-6">
+            <div ng-click="removeCurrentDateTemplate()" style = "color: red"><i class="glyphicon glyphicon-remove gi-m" aria-hidden="true"></i> 删除该记录
+            </div>
+          </div>
+          <div  class="col-md-12">
+            <div file-dialog  webkitdirectory on-file-selected="onRootDirectorySelected" title = '修改Clock目录'/>
+            <div ng-show="false"><i class="glyphicon glyphicon-refresh gi-m" ng-click="refreshRootDirectory()" aria-hidden="true"></i>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12 clear">
+            当前目录 {{dateTemplate.rootDirectory}}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        第二步：设置播放周期
+      </div>
+      <div class="panel-body">
+        <div class="col-md-12">
+          <a ng-href="#/period" class="btn btn-default" >播放周期</a>
+          {{dateTemplate.periodInfo | periodInfoFilter}}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        第三步：曲风盒设置
+      </div>
+      <div class="panel-body">
+        <div id="hourly"></div>
+        <div class="col-md-12">
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>序号</th>
+                <th>曲风盒</th>
+                <th>曲数目</th>
+                <th>开始时间</th>
+                <th>结束时间</th>
+                <th>总时长</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr ng-repeat="box in dateTemplate.boxes" ng-click="openBoxDetail(box)">
+                <td>{{$index + 1}}</td>
+                <td>{{box.name}}</td>
+                <td>{{box.songList.length}}</td>
+                <td>{{box.startTm | date:'shortTime'}}</td>
+                <td>{{box.endTm | date:'shortTime'}}</td>
+                <td>{{box.totalLength | durationFilter}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
